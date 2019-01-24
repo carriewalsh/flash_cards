@@ -4,7 +4,7 @@ require './lib/card.rb'
 
 class CardTest < Minitest::Test
 
-  def test_it_exists
+  def test_card_exists
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
 
     assert_instance_of Card, card

@@ -1,52 +1,48 @@
-
-
 class Turn
-  attr_reader :string, :card #these don't need to be changed...
+  attr_accessor :string, :card #these don't need to be changed outside
   def initialize(string, card)
     @string = string
     @card = card
   end
+
   def guess
     p "Your guess is:"
+    p @string
     return @string
   end
+<<<<<<< HEAD
   def card
     p @card.question #needs @ sign?
+=======
+  def card #how is this related to round?
+    return @card
+>>>>>>> round-simple-version
   end
+
   def correct?
-    if @string == @card.acceptable_answers
+    if @string == @card.hash[:acceptable_answers]
       return true
     elsif
-      for option in @card.half_answers
+      for option in @card.hash[:half_answers]
         if @string == option
           return "sort of"
-        else
         end
       end
-    elsif @string != @card.acceptable_answers
+    else
       return false
     end
   end
+
   def feedback
     if self.correct? == true
-      return "You got it!"
+      p "You got it!"
+      return true
     elsif self.correct? == "sort of"
-      return "Half a point! You were close.."
+      return "sort of"
+      p "Half a point! You were close.."
     else
-      return "Nope. You didn't get it."
+      p "Nope. You didn't get it."
+      return false
     end
   end
 end
-
-class Card
-  attr_reader :question, :acceptable_answers, :half_answers, :category  #b/c no one needs to change these
-  def initialize(question, acceptable_answers=[], half_answers=[], category)
-    @question = question
-    @acceptable_answers = acceptable_answers
-    @half_answers = half_answers
-    @category = category
-  end
-end
-
-card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
-turn = Turn.new("Juneau",card)

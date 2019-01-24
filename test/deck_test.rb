@@ -5,6 +5,14 @@ require './lib/turn'
 require './lib/card'
 
 class DeckTest < MiniTest::Test
+
+  def test_deck_exists
+    deck = Deck.new
+
+    assert_instance_of Deck, deck
+
+  end
+
   def test_new_deck_is_empty
     deck = Deck.new
 
