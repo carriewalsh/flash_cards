@@ -1,25 +1,23 @@
 class Deck
-  attr_accessor :card_array, :category_array
-  def initialize(card_array=[])
+  attr_reader :card_array, :category_array
+  def initialize(card_array=[]) #tested
     @card_array = card_array
     @category_array = []
   end
-  def <<(card)
+  def <<(card) #tested
     @card_array << card
   end
-  def shuffle
+  def shuffle #tested
     @card_array.shuffle!
   end
-  def count
+  def count #tested
     @card_array.length
   end
-  def cards_in_category(category)
-    @card_array.each do |card|
-      if category == card.category
-        @category_array << card
-      end
+  def cards_in_category(category) #tested for .each; tested for .select (doesn't work with .map)
+    @category_array = @card_array.select do |card|
+      category == card.category
     end
-    return @category_array
+    #return @category_array - doesn't need this
   end
 end
 class Card

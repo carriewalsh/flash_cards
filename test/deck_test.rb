@@ -22,6 +22,7 @@ class DeckTest < MiniTest::Test
 
     assert deck.card_array.any?
   end
+
   def test_cards_shuffle
     deck = Deck.new
     card1 = Card.new("Q","A","B",:nada)
@@ -50,10 +51,9 @@ class DeckTest < MiniTest::Test
     deck.count
 
     assert_equal 2, deck.count
-
   end
 
-  def test_if_category_chosen
+  def test_if_category_array_made
     deck = Deck.new
     card1 = Card.new("Q","A","B",:nada)
     card2 = Card.new("Q2","A2","B2",:nada)
@@ -61,6 +61,6 @@ class DeckTest < MiniTest::Test
     deck << card2
     deck.cards_in_category(:nada)
 
-    assert_equal [card1, card2], deck.category_array#just had to prepend this w/ deck
+    assert_equal [card1, card2], deck.category_array #just had to prepend this w/ deck
   end
 end
