@@ -12,7 +12,6 @@ class Turn
   end
   def card
     p @card.question #needs @ sign?
-    binding.pry
   end
   def correct?
     if @string == @card.acceptable_answers
