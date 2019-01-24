@@ -19,9 +19,48 @@ class DeckTest < MiniTest::Test
     card2 = Card.new("Q2","A2","B2",:nada2)
     deck << card1
     deck << card2
+
     assert deck.card_array.any?
+  end
+  def test_cards_shuffle
+    deck = Deck.new
+    card1 = Card.new("Q","A","B",:nada)
+    card2 = Card.new("Q2","A2","B2",:nada2)
+    card3 = Card.new("Q3","A3","B3",:nada3)
+    card4 = Card.new("Q4","4A","B4",:nada4)
+    card5 = Card.new("Q5","A5","B5",:nada5)
+    card6 = Card.new("Q6","A6","B6",:nada6)
+    deck << card1
+    deck << card2
+    deck << card3
+    deck << card4
+    deck << card5
+    deck << card6
+    assert_equal card1, deck.card_array[0]
+    deck.shuffle
+    refute_equal card1, deck.card_array[0] #random so only works most of the time
+  end
+
+  def test_deck_has_count
+    deck = Deck.new
+    card1 = Card.new("Q","A","B",:nada)
+    card2 = Card.new("Q2","A2","B2",:nada2)
+    deck << card1
+    deck << card2
+    deck.count
+
+    assert_equal 2, deck.count
 
   end
 
+  def test_if_category_chosen
+    deck = Deck.new
+    card1 = Card.new("Q","A","B",:nada)
+    card2 = Card.new("Q2","A2","B2",:nada)
+    deck << card1
+    deck << card2
+    deck.cards_in_category(:nada)
 
+    assert_equal [card1, card2], deck.category_array#just had to prepend this w/ deck
+  end
 end
