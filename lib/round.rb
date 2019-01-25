@@ -74,7 +74,7 @@ class Round
   end
 
   def category_percent_correct
-    @deck.hash[:category].uniq.each do |x|
+    @deck.card_array.hash[:category].uniq.each do |x|
       total = @deck.cards_in_category(x).count
       correct = 0
       if @correct_cards.hash[:category] == x

@@ -79,7 +79,7 @@ class TurnTest < MiniTest::Test
     turn.correct?
     turn.feedback
 
-    assert_equal "Half a point! You were close..", turn.feedback
+    assert_equal "Half a point! You were close!", turn.feedback
   end
 
   def test_wrong_feedback

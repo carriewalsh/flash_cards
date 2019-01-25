@@ -31,7 +31,7 @@ class Turn
       p "You got it!"
       return "You got it!"
     elsif self.correct? == "sort of"
-      p "Half a point! You were close.."
+      p "Half a point! You were close!"
       return "Half a point! You were close!"
     else
       p "Nope. You didn't get it."
