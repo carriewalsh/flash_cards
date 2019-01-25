@@ -16,11 +16,19 @@ class Deck
     @card_array.length
   end
   def cards_in_category(category) #tested for .each; tested for .select, tested for .map
+    cat_array = []
     @card_array.map do |card|
       if category == card.category
-        @category_array << card
+        cat_array << card
       end
     end
-    #return @category_array - doesn't need this
+    return cat_array
   end
+
+  def array_of_categories
+    @category_array = @card_array.map do |card|
+      card.hash[:category]
+    end
+  end
+
 end

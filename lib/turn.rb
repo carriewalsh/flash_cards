@@ -6,8 +6,7 @@ class Turn
   end
 
   def guess
-    p "Your guess is:"
-    p @string
+    p "Your guess is: " + @string
     return @string
   end
   def card #how is this related to round?

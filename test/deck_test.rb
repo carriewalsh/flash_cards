@@ -67,8 +67,20 @@ class DeckTest < MiniTest::Test
     card2 = Card.new("Q2","A2","B2",:nada)
     deck << card1
     deck << card2
-    deck.cards_in_category(:nada)
 
-    assert_equal [card1, card2], deck.category_array #just had to prepend this w/ deck
+
+    assert_equal [card1, card2], deck.cards_in_category(:nada) #just had to prepend this w/ deck
   end
+
+  def test_array_of_categories_made
+    deck = Deck.new
+    card1 = Card.new("Q","A","B",:nada)
+    card2 = Card.new("Q2","A2","B2",:nada)
+    deck << card1
+    deck << card2
+
+    assert_equal [:nada, :nada], deck.array_of_categories
+  end
+
+
 end

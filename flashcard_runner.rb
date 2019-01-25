@@ -2,23 +2,20 @@ require "./lib/turn"
 require "./lib/card"
 require "./lib/deck"
 require "./lib/round"
+require "./lib/card_generator"
+require "cards.txt"
 require "pry"
 
 
-card1 = Card.new("What is the first element on the periodic table?", "hydrogen", ["hidrogen"], :chemistry)
-card2 = Card.new("What is Newton's first law?", "an object at rest stays at rest", ["inertia"], :physics)
-card3 = Card.new("What is the Latin name for a rat?", "Rattus rattus", ["rattus rattus"], :biology)
-card4 = Card.new("What is the most diverse animal phylum?", "arthropoda", ["arthropods","insects"],:biology)
 
+cards = CardGenerator.new("cards.txt").cards
 deck = Deck.new
-deck << card1
-deck << card2
-deck << card3
-deck << card4
-
+deck << cards
+deck.array_of_categories
 round = Round.new(deck)
 
 
+#i don't have a round.start. it just starts
 
 
 p "Welcome to the Great Flash Card Game!!"
@@ -43,3 +40,12 @@ round.turns_loop
 sleep(0.5)
 p "Let's see how you did!"
 sleep(1)
+p "In total, you got #{round.calculate_percent_correct} percent correct!"
+p "You got #{round.calculate_percent_half} half right."
+
+sleep(1)
+p "Specifically: "
+round.print_correct_category_percents
+sleep(1)
+
+p "No matter how you did, you should feel good about yourself because you "

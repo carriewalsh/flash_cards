@@ -18,7 +18,7 @@ class Round
   end
 
   def take_turn
-    p current_card.question #does this need round?
+    p "Question #{@count+1}: " + current_card.question #does this need round?
     @string = gets.chomp #gets answer
     turn = Turn.new(@string, current_card)
     turn.guess
@@ -62,29 +62,54 @@ class Round
   end
 
   def calculate_percent_correct
-    total = @correct_cards + @half_cards + @wrong_cards
-    percent = (100 * @correct_cards / total).round
-    return "#{percent}%"
+    total = @correct_cards.count + @half_cards.count + @wrong_cards.count
+    percent = (100 * @correct_cards.count / total).round
+    return percent
   end
+
   def calculate_percent_half
-    total = @correct_cards + @half_cards + @wrong_cards
+    total = @correct_cards.count + @half_cards.count + @wrong_cards.count
 
-    percent = (100 * @half_cards / total).round
-    return "#{percent}%"
+    percent = (100 * @half_cards.count / total).round
+    return percent
   end
 
-  def category_percent_correct
-    @deck.card_array.hash[:category].uniq.each do |x|
-      total = @deck.cards_in_category(x).count
+  def category_percent_correct(category) #test works
+      total = @deck.cards_in_category(category).count
       correct = 0
-      if @correct_cards.hash[:category] == x
-        correct += 1
+      @correct_cards.each do |card|
+        if card.hash[:category] == category
+          correct += 1
+        end
       end
-      percent = (100 * correct / total).round
-      p "You got #{percent} of #{:category} correct."
-    end
-
+      percent = (100 * correct / total).round.to_s
+      p "You got #{percent} percent of #{category} questions correct."
+    return "You got #{percent} percent of #{category} questions correct."
   end
-  #I want to make correct answer-ness a state of each card so I can access it more easily.
+
+  def category_percent_half(category) #test works
+      total = @deck.cards_in_category(category).count
+      correct = 0
+      @half_cards.each do |card|
+        if card.hash[:category] == category
+          correct += 1
+        end
+      end
+      percent = (100 * correct / total).round.to_s
+      p "You got #{percent} percent of #{category} questions half right."
+    return "You got #{percent} percent of #{category} questions half right."
+  end
+
+
+  def print_correct_category_percents
+    correct = @deck.category_array.uniq
+    correct.map do |x|
+      category_percent_correct(x)
+    end
+    half = @deck.category_array.uniq
+    half.map do |x|
+      category_percent_half(x)
+    end
+  end
 
 end
