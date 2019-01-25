@@ -15,17 +15,11 @@ class Deck
   def count #tested
     @card_array.length
   end
-<<<<<<< HEAD
   def cards_in_category(category) #tested for .each; tested for .select, tested for .map
     @card_array.map do |card|
       if category == card.category
         @category_array << card
       end
-=======
-  def cards_in_category(category) #tested for .each; tested for .select;tested for .map
-    @category_array = @card_array.map do |card|
-      category == card.hash[:category]
->>>>>>> round-simple-version
     end
     #return @category_array - doesn't need this
   end

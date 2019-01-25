@@ -10,24 +10,17 @@ class Turn
     p @string
     return @string
   end
-<<<<<<< HEAD
-  def card
-    p @card.question #needs @ sign?
-=======
   def card #how is this related to round?
     return @card
->>>>>>> round-simple-version
   end
 
   def correct?
     if @string == @card.hash[:acceptable_answers]
       return true
-    elsif
-      for option in @card.hash[:half_answers]
-        if @string == option
-          return "sort of"
-        end
-      end
+    elsif @card.hash[:half_answers].include?(@string)
+      # for option in @card.hash[:half_answers]
+      #   if @string == option
+        return "sort of"
     else
       return false
     end
@@ -36,13 +29,13 @@ class Turn
   def feedback
     if self.correct? == true
       p "You got it!"
-      return true
+      return "You got it!"
     elsif self.correct? == "sort of"
-      return "sort of"
       p "Half a point! You were close.."
+      return "Half a point! You were close!"
     else
       p "Nope. You didn't get it."
-      return false
+      return "Nope. You didn't get it."
     end
   end
 end

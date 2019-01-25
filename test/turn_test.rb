@@ -7,6 +7,7 @@ class TurnTest < MiniTest::Test
 
   def test_turn_exists
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+
     turn = Turn.new("Juneau",card)
 
     assert_instance_of Turn, turn
@@ -30,6 +31,7 @@ class TurnTest < MiniTest::Test
   end
 
   def test_correct_answer_works
+
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
     turn = Turn.new("Juneau",card)
     turn.guess
@@ -40,6 +42,7 @@ class TurnTest < MiniTest::Test
 
 
   def test_half_answer_works
+
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
     turn = Turn.new("Junaeu",card)
     turn.guess
@@ -49,6 +52,7 @@ class TurnTest < MiniTest::Test
   end
 
   def test_wrong_answer_works
+
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
     turn = Turn.new("New York",card)
     turn.guess
@@ -58,6 +62,7 @@ class TurnTest < MiniTest::Test
   end
 
   def test_correct_feedback
+
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
     turn = Turn.new("Juneau",card)
     turn.guess
@@ -79,7 +84,7 @@ class TurnTest < MiniTest::Test
 
   def test_wrong_feedback
     card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
-    turn = Turn.new("Juneau",card)
+    turn = Turn.new("asdfas",card)
     turn.guess
     turn.correct?
     turn.feedback
