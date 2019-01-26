@@ -1,5 +1,5 @@
 card,question,acceptable_answers,half_answers,category
-card1,'What is the first element on the periodic table?','hydrogen',['hidrogen'],:chemistry
-card2,'What is Newton's first law?','an object at rest stays at rest',['inertia'], :physics
-card3,'What is the Latin name for a rat?','Rattus rattus',['rattus rattus'],:biology
-card4,'What is the most diverse animal phylum?','arthropoda',['arthropods','insects'],:biology
+card1,What is the first element on the periodic table?,hydrogen,[hidrogen],chemistry
+card2,What is Newton's first law?,an object at rest stays at rest,[inertia], physics
+card3,What is the Latin name for a rat?,Rattus rattus,[rattus rattus],biology
+card4,What is the most diverse animal phylum?,arthropoda,[arthropods,insects],biology

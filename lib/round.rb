@@ -19,11 +19,14 @@ class Round
 
   def take_turn
     p "Question #{@count+1}: " + current_card.question #does this need round?
-    @string = gets.chomp #gets answer
+    @string = STDIN.gets.chomp #somehow iteration 4 makes this not work w/o STDIN which stands for standard input
+    # binding.pry
     turn = Turn.new(@string, current_card)
     turn.guess
     if @string == "q"
       quit_round
+    elsif @string == "!!!"
+      extra_quit_round
     elsif turn.correct? == true
       @score += 1
       @correct_cards << current_card
@@ -47,7 +50,7 @@ class Round
   end
 
   def turns_loop
-    @deck.card_array.each do
+    @deck.card_array.each do |card|
       take_turn
       #p @score
       puts
@@ -57,6 +60,12 @@ class Round
 
   def quit_round #tested
     p "It's okay, we all have bad days."
+    exit!
+    return "end"
+  end
+
+  def extra_quit_round #tested
+    p "Okay okay! Chillax! You can quit!"
     exit!
     return "end"
   end
@@ -78,13 +87,14 @@ class Round
       total = @deck.cards_in_category(category).count
       correct = 0
       @correct_cards.each do |card|
+        # binding.pry
         if card.hash[:category] == category
           correct += 1
         end
       end
       percent = (100 * correct / total).round.to_s
-      p "You got #{percent} percent of #{category} questions correct."
-    return "You got #{percent} percent of #{category} questions correct."
+      p "You got #{percent}% of #{category} questions correct."
+    return "You got #{percent}% of #{category} questions correct."
   end
 
   def category_percent_half(category) #test works
@@ -96,8 +106,8 @@ class Round
         end
       end
       percent = (100 * correct / total).round.to_s
-      p "You got #{percent} percent of #{category} questions half right."
-    return "You got #{percent} percent of #{category} questions half right."
+      p "You got #{percent}% of #{category} questions half right."
+    return "You got #{percent}% of #{category} questions half right."
   end
 
 

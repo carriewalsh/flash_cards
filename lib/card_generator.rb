@@ -21,7 +21,7 @@ class CardGenerator
       question = row[:question]
       acceptable_answers = row[:acceptable_answers]
       half_answers = row[:half_answers]
-      category = [:category]
+      category = row[:category]
       card = Card.new(question,acceptable_answers,half_answers,category)
       @cards << card
     end

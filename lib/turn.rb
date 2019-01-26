@@ -1,3 +1,5 @@
+require "pry"
+
 class Turn
   attr_accessor :string, :card #these don't need to be changed outside
   def initialize(string, card)
@@ -9,12 +11,13 @@ class Turn
     p "Your guess is: " + @string
     return @string
   end
-  def card #how is this related to round?
-    return @card
-  end
+  # def card #how is this related to round?
+  #   return @card
+  # end I think this is unnecessary
 
   def correct?
     if @string == @card.hash[:acceptable_answers]
+      # binding.pry
       return true
     elsif @card.hash[:half_answers].include?(@string)
       # for option in @card.hash[:half_answers]
@@ -24,6 +27,7 @@ class Turn
       return false
     end
   end
+
 
   def feedback
     if self.correct? == true

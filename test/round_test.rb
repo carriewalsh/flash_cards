@@ -53,9 +53,10 @@ class RoundTest < MiniTest::Test
 
   def test_if_enter_q_quits
     skip #this works
+    p "quit"
     @round.turns_loop
 
-    assert "end", @round.take_turn
+    #not sure how to test if program ends
   end
 
   def test_correct_answer_adds_card_to_correct_array
@@ -84,20 +85,29 @@ class RoundTest < MiniTest::Test
   end
 
   def test_percent_correct
-    @round.correct_cards = 3
-    @round.half_cards = 2
-    @round.wrong_cards = 1
+    @card3 = Card.new("Q","A","B",:nada)
+    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @deck << @card3
+    @deck << @card4
+    @round.correct_cards << @card1
+    @round.correct_cards << @card2
+    @round.half_cards << @card3
+    @round.wrong_cards << @card4
 
     assert_equal 50, @round.calculate_percent_correct
-    #why doesn't this kick up an error, but it does in flashcard_runner?
   end
 
   def test_percent_half
-    @round.correct_cards = 3
-    @round.half_cards = 2
-    @round.wrong_cards = 1
+    @card3 = Card.new("Q","A","B",:nada)
+    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @deck << @card3
+    @deck << @card4
+    @round.correct_cards << @card1
+    @round.correct_cards << @card2
+    @round.half_cards << @card3
+    @round.wrong_cards << @card4
 
-    assert_equal 33, @round.calculate_percent_half
+    assert_equal 25, @round.calculate_percent_half
 
   end
 
@@ -112,7 +122,7 @@ class RoundTest < MiniTest::Test
     @round.half_cards << @card3
     @round.wrong_cards << @card4
 
-    assert_equal "You got 50 percent of nada questions correct.", @round.category_percent_correct(:nada)
+    assert_equal "You got 50% of nada questions correct.", @round.category_percent_correct(:nada)
   end
 
   def test_percent_half_category
@@ -125,7 +135,7 @@ class RoundTest < MiniTest::Test
     @round.half_cards << @card3
     @round.wrong_cards << @card4
 
-    assert_equal "You got 50 percent of nada questions half right.", @round.category_percent_half(:nada)
+    assert_equal "You got 50% of nada questions half right.", @round.category_percent_half(:nada)
   end
 
   def test_print_correct_category_percents
@@ -139,7 +149,7 @@ class RoundTest < MiniTest::Test
     @round.wrong_cards << @card4
     @deck.array_of_categories
 
-    assert_equal ["You got 50 percent of nada questions half right.", "You got 0 percent of nada2 questions half right."], @round.print_correct_category_percents
+    assert_equal ["You got 50% of nada questions half right.", "You got 0% of nada2 questions half right."], @round.print_correct_category_percents
 
   end
 

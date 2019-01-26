@@ -1,7 +1,7 @@
 
 
 class Deck
-  attr_reader :card_array, :category_array
+  attr_accessor :card_array, :category_array #this is edited outside this class
   def initialize(card_array=[]) #tested
     @card_array = card_array
     @category_array = []
@@ -27,7 +27,9 @@ class Deck
 
   def array_of_categories
     @category_array = @card_array.map do |card|
+      # binding.pry
       card.hash[:category]
+
     end
   end
 
