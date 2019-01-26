@@ -6,7 +6,7 @@ require './lib/card'
 class TurnTest < MiniTest::Test
 
   def test_turn_exists
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
 
     turn = Turn.new("Juneau",card)
 
@@ -15,7 +15,7 @@ class TurnTest < MiniTest::Test
 
 
   def test_turn_accepts_answer
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("Juneau",card)
 
     assert_equal "Juneau", turn.string
@@ -23,7 +23,7 @@ class TurnTest < MiniTest::Test
 
 
   def test_turn_has_card
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("Juneau",card)
 
     assert_equal "What is the capital of Alaska?", card.question #is this for sure right? is it accessing the card in Turn?
@@ -32,7 +32,7 @@ class TurnTest < MiniTest::Test
 
   def test_correct_answer_works
 
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("Juneau",card)
     turn.guess
     turn.correct?
@@ -43,7 +43,7 @@ class TurnTest < MiniTest::Test
 
   def test_half_answer_works
 
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("Junaeu",card)
     turn.guess
     turn.correct?
@@ -53,7 +53,7 @@ class TurnTest < MiniTest::Test
 
   def test_wrong_answer_works
 
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("New York",card)
     turn.guess
     turn.correct?
@@ -63,7 +63,7 @@ class TurnTest < MiniTest::Test
 
   def test_correct_feedback
 
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("Juneau",card)
     turn.guess
     turn.correct?
@@ -73,23 +73,34 @@ class TurnTest < MiniTest::Test
   end
 
   def test_half_answer_feedback
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("Junaeu",card)
     turn.guess
     turn.correct?
     turn.feedback
 
-    assert_equal "Half a point! You were close!", turn.feedback
+    assert_equal "Half a point! It's JunEAu! Did you spell it correctly?", turn.feedback
   end
 
   def test_wrong_feedback
-    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography)
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
     turn = Turn.new("asdfas",card)
     turn.guess
     turn.correct?
     turn.feedback
 
     assert_equal "Nope. You didn't get it.", turn.feedback
+  end
+
+  def test_blank_answer_feedback
+    card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
+    turn = Turn.new("",card)
+    turn.guess
+    turn.correct?
+    turn.feedback
+
+    assert_equal "Wait, you didn't answer..", turn.feedback
+
   end
 
 end

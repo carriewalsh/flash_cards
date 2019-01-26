@@ -10,10 +10,10 @@ class RoundTest < MiniTest::Test
   def setup
     @deck = Deck.new
     @round = Round.new(@deck)
-    @card1 = Card.new("Q","A","B",:nada)
-    @card2 = Card.new("Q2","A2","B2",:nada2)
-    @deck << @card1
-    @deck << @card2
+    @card1 = Card.new("Q","A","B",:nada,"!"),"!"
+    @card2 = Card.new("Q2","A2","B2",:nada2,"!")
+    @deck.card_array << @card1
+    @deck.card_array << @card2
 
   end
 
@@ -85,8 +85,8 @@ class RoundTest < MiniTest::Test
   end
 
   def test_percent_correct
-    @card3 = Card.new("Q","A","B",:nada)
-    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @card3 = Card.new("Q","A","B",:nada, "!")
+    @card4 = Card.new("Q2","A2","B2",:nada2, "!")
     @deck << @card3
     @deck << @card4
     @round.correct_cards << @card1
@@ -98,8 +98,8 @@ class RoundTest < MiniTest::Test
   end
 
   def test_percent_half
-    @card3 = Card.new("Q","A","B",:nada)
-    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @card3 = Card.new("Q","A","B",:nada,"!")
+    @card4 = Card.new("Q2","A2","B2",:nada2,"!")
     @deck << @card3
     @deck << @card4
     @round.correct_cards << @card1
@@ -113,8 +113,8 @@ class RoundTest < MiniTest::Test
 
   def test_percent_correct_category
 
-    @card3 = Card.new("Q","A","B",:nada)
-    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @card3 = Card.new("Q","A","B",:nada,"!")
+    @card4 = Card.new("Q2","A2","B2",:nada2,"!")
     @deck << @card3
     @deck << @card4
     @round.correct_cards << @card1
@@ -126,8 +126,8 @@ class RoundTest < MiniTest::Test
   end
 
   def test_percent_half_category
-    @card3 = Card.new("Q","A","B",:nada)
-    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @card3 = Card.new("Q","A","B",:nada,"!")
+    @card4 = Card.new("Q2","A2","B2",:nada2,"!")
     @deck << @card3
     @deck << @card4
     @round.correct_cards << @card1
@@ -139,8 +139,8 @@ class RoundTest < MiniTest::Test
   end
 
   def test_print_correct_category_percents
-    @card3 = Card.new("Q","A","B",:nada)
-    @card4 = Card.new("Q2","A2","B2",:nada2)
+    @card3 = Card.new("Q","A","B",:nada,"!")
+    @card4 = Card.new("Q2","A2","B2",:nada2,"!")
     @deck << @card3
     @deck << @card4
     @round.correct_cards << @card1
@@ -151,6 +151,13 @@ class RoundTest < MiniTest::Test
 
     assert_equal ["You got 50% of nada questions half right.", "You got 0% of nada2 questions half right."], @round.print_correct_category_percents
 
+  end
+
+  def test_blank_answer_counts_as_wrong
+    p "BLANK"
+    @round.take_turn
+
+    assert_equal @card1, @round.wrong_cards[0]
   end
 
 end

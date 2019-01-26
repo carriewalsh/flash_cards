@@ -27,6 +27,12 @@ class Round
       quit_round
     elsif @string == "!!!"
       extra_quit_round
+    elsif turn.correct? == "no answer"
+      turn.correct? == false
+      @score += 0
+      @wrong_cards << current_card
+      @count += 1
+      return turn.feedback
     elsif turn.correct? == true
       @score += 1
       @correct_cards << current_card

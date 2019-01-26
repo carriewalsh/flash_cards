@@ -21,7 +21,7 @@ class CardTest < Minitest::Test
 
     card = Card.new("What is the capital of Alaska?", "Juneau", "juneau", :Geography)
 
-    assert_equal "Juneau", card.acceptable_answers
+    assert_equal "Juneau", card.acceptable_answer
   end
 
   def test_it_has_a_category

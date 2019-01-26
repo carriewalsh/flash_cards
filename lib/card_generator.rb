@@ -19,10 +19,11 @@ class CardGenerator
     contents.each do |row|
       card = row[:card]
       question = row[:question]
-      acceptable_answers = row[:acceptable_answers]
-      half_answers = row[:half_answers]
+      acceptable_answer = row[:acceptable_answer]
+      half_answer = row[:half_answer]
       category = row[:category]
-      card = Card.new(question,acceptable_answers,half_answers,category)
+      response = row[:response]
+      card = Card.new(question,acceptable_answer,half_answer,category,response)
       @cards << card
     end
   end

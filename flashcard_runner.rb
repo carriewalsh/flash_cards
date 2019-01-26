@@ -60,5 +60,6 @@ sleep(1)
 p "Specifically: "
 round.print_correct_category_percents
 sleep(1)
-
-p "No matter how you did, you should feel good about yourself because you have skills you can bring to the table."
+puts
+p "No matter how you did, you should feel good about yourself. You have mass and take up space. You matter."
+puts

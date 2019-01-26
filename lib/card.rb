@@ -1,9 +1,10 @@
 class Card
-  attr_reader :question, :acceptable_answers, :half_answers, :category, :hash  #b/c no one needs to change these
-  def initialize(question,acceptable_answers,half_answers,category)
+  attr_accessor :question, :acceptable_answer, :half_answer, :category, :hash, :response  #b/c no one needs to change these
+  def initialize(question,acceptable_answer,half_answer,category,response)
     @hash = {question: @question = question,
-             acceptable_answers: @acceptable_answers = acceptable_answers,
-             half_answers: @half_answers = half_answers,
-             category: @category = category}
+             acceptable_answer: @acceptable_answer = acceptable_answer,
+             half_answer: @half_answer = half_answer,
+             category: @category = category,
+             response: @response = response}
   end
 end
