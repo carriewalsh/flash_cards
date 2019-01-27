@@ -1,7 +1,7 @@
 require "pry"
 
 class Round
-  attr_accessor :deck, :score, :count, :score, :string, :correct_cards, :half_cards, :wrong_cards
+  attr_accessor :deck, :score, :count, :score, :string, :correct_cards, :half_cards, :wrong_cards, :name
   def initialize(deck)
     @deck = deck
     @score = 0
@@ -125,6 +125,53 @@ class Round
     half = @deck.category_array.uniq
     half.map do |x|
       category_percent_half(x)
+    end
+  end
+
+  def start
+    p "Welcome to the Great Flash Card Game!!"
+    sleep(0.5)
+    puts
+    p "*** *** applause *** ***"
+    puts
+    sleep(1)
+    p "Let's meet our contestant! What's your name?"
+    @name = gets.chomp.capitalize!
+    p "Great #{@name}! You will be answering #{deck.card_array.count} questions"
+    puts
+    p " -- if you are ever panicking and need to leave, type 'q' -- "
+    puts
+    sleep(1)
+    p "Let's shuffle the deck"
+    puts
+    deck.card_shuffle
+    p " ***trrr  ///||\\\\\\\|||///// trrr***"
+    sleep(1)
+    puts
+    p "Ready, #{@name}??"
+    sleep(0.5)
+    p "Here we go!"
+    puts
+    sleep(0.5)
+  end
+
+  def finish
+    sleep(0.5)
+    p "Let's see how you did, #{@name}!"
+    sleep(1)
+    p "You got #{@score} points!"
+    p "In total, you got #{calculate_percent_correct}% correct!"
+    p "You got #{calculate_percent_half}% half right."
+
+    sleep(1)
+    p "Specifically: "
+    print_correct_category_percents
+    sleep(1)
+    puts
+    p "No matter how you did, #{@name}, you should feel good about yourself."
+    puts
+    if @score == 0
+      p "Remember, in golf, lowest points wins!"
     end
   end
 
