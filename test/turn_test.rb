@@ -5,7 +5,7 @@ require './lib/card'
 
 class TurnTest < MiniTest::Test
   def setup
-    @card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography, "It's JunEAu! Did you spell it correctly?")
+    @card = Card.new("What is the capital of Alaska?", "Juneau", "Junaeu",:Geography, "It's JunEAu! Did you spell it correctly?")
   end
 
   def test_turn_exists

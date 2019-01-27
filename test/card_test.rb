@@ -4,7 +4,7 @@ require './lib/card.rb'
 
 class CardTest < Minitest::Test
   def setup
-    @card = Card.new("What is the capital of Alaska?", "Juneau",["juneau", "Junaeu"], :Geography,"!")
+    @card = Card.new("What is the capital of Alaska?", "Juneau", "Junaeu",:Geography, "It's JunEAu! Did you spell it correctly?")
   end
 
   def test_card_exists

@@ -26,8 +26,7 @@ class Deck
 
   def array_of_categories
     @category_array = @card_array.map do |card|
-      card.hash[:category]
-
+      card.category
     end
   end
 

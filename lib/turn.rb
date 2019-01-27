@@ -13,11 +13,11 @@ class Turn
   def correct?
     if @string == ""
       return "no answer"
-    elsif @string == @card.hash[:acceptable_answer]
+    elsif @string == @card.acceptable_answer
       # binding.pry
       return true
-    elsif @card.hash[:half_answer].include?(@string)
-      # for option in @card.hash[:half_answer]
+    elsif @card.half_answer.include?(@string)
+      # for option in @card[:half_answer]
       #   if @string == option
         return "sort of"
     else
@@ -34,8 +34,8 @@ class Turn
       p "You got it!"
       return "You got it!"
     elsif self.correct? == "sort of"
-      p "Half a point! #{@card.hash[:response]}"
-      return "Half a point! #{@card.hash[:response]}"
+      p "Half a point! #{@card.response}"
+      return "Half a point! #{@card.response}"
     else
       p "Nope. You didn't get it."
       return "Nope. You didn't get it."

@@ -10,10 +10,10 @@ class RoundTest < MiniTest::Test
   def setup
     @deck = Deck.new
     @round = Round.new(@deck)
-    @card1 = Card.new("Q","A","B",:nada,"!")
-    @card2 = Card.new("Q2","A2","B2",:nada2,"!")
-    @card3 = Card.new("Q","A","B",:nada, "!")
-    @card4 = Card.new("Q2","A2","B2",:nada2, "!")
+    @card1 = Card.new("Q", "A", "B",:nada,"!")
+    @card2 = Card.new("Q2", "A2", "B2",:nada2, "!")
+    @card3 = Card.new("Q", "A", "B",:nada,"!")
+    @card4 = Card.new("Q2", "A2", "B2",:nada2, "!")
     @deck.card_array << @card1
     @deck.card_array << @card2
     @deck.card_array << @card3

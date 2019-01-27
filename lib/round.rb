@@ -88,7 +88,7 @@ class Round
       total = @deck.cards_in_category(category).count
       correct = 0
       @correct_cards.each do |card|
-        if card.hash[:category] == category
+        if card.category == category
           correct += 1
         end
       end
@@ -101,7 +101,7 @@ class Round
       total = @deck.cards_in_category(category).count
       correct = 0
       @half_cards.each do |card|
-        if card.hash[:category] == category
+        if card.category == category
           correct += 1
         end
       end
@@ -140,10 +140,12 @@ class Round
     p "Let's shuffle the deck"
     puts
     deck.card_shuffle
-    p " ***trrr  ///||\\\\\\\|||///// trrr***"
+    p " ***trrr  /////||\\\\\\\|||/////  trrr***"
     sleep(1)
     puts
     p "Ready, #{@name}??"
+    sleep(0.5)
+    p "Remember, capitalization matters!"
     sleep(0.5)
     p "Here we go!"
     puts

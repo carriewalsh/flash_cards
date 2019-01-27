@@ -20,7 +20,7 @@ deck = Deck.new
 # deck << card4
 
 # cards = CardGenerator.new("cards.txt")
-cards = CardGenerator.new("alternate_cards.txt")
+cards = CardGenerator.new("cards.txt")
 cards.create_cards
 deck.card_array = cards.cards #this puts the array of cards in deck
 
