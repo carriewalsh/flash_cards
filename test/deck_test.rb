@@ -42,7 +42,7 @@ class DeckTest < MiniTest::Test
   def test_cards_shuffle
 
     assert_equal @card1, @deck.card_array[0]
-    @deck.shuffle
+    @deck.card_shuffle
     refute_equal @card1, @deck.card_array[0] #random so only works most of the time
   end
 

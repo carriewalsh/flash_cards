@@ -99,8 +99,8 @@ class Round
         end
       end
       percent = (100 * correct / total).round.to_s
-      p "You got #{percent}% of #{category} questions correct."
-    return "You got #{percent}% of #{category} questions correct."
+      p "   You got #{percent}% of #{category} questions correct."
+    return "   You got #{percent}% of #{category} questions correct."
   end
 
   def category_percent_half(category) #test works
@@ -112,8 +112,8 @@ class Round
         end
       end
       percent = (100 * correct / total).round.to_s
-      p "You got #{percent}% of #{category} questions half right."
-    return "You got #{percent}% of #{category} questions half right."
+      p "   You got #{percent}% of #{category} questions half right."
+    return "   You got #{percent}% of #{category} questions half right."
   end
 
 

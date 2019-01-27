@@ -111,7 +111,7 @@ class RoundTest < MiniTest::Test
     @round.half_cards << @card3
     @round.wrong_cards << @card4
 
-    assert_equal "You got 50% of nada questions correct.", @round.category_percent_correct(:nada)
+    assert_equal "   You got 50% of nada questions correct.", @round.category_percent_correct(:nada)
   end
 
   def test_percent_half_category
@@ -120,7 +120,7 @@ class RoundTest < MiniTest::Test
     @round.half_cards << @card3
     @round.wrong_cards << @card4
 
-    assert_equal "You got 50% of nada questions half right.", @round.category_percent_half(:nada)
+    assert_equal "   You got 50% of nada questions half right.", @round.category_percent_half(:nada)
   end
 
   def test_print_correct_category_percents
@@ -130,7 +130,7 @@ class RoundTest < MiniTest::Test
     @round.wrong_cards << @card4
     @deck.array_of_categories
 
-    assert_equal ["You got 50% of nada questions half right.", "You got 0% of nada2 questions half right."], @round.print_correct_category_percents
+    assert_equal ["   You got 50% of nada questions half right.", "   You got 0% of nada2 questions half right."], @round.print_correct_category_percents
 
   end
 

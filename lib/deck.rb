@@ -9,7 +9,7 @@ class Deck
   def <<(card) #tested
     @card_array << card
   end
-  def shuffle #tested
+  def card_shuffle #tested
     @card_array.shuffle!
   end
   def count #tested
