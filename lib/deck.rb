@@ -27,8 +27,8 @@ class Deck
 
   def array_of_categories
     @category_array = @card_array.map do |card|
-      binding.pry
-      card.cards.hash[:category]
+      # binding.pry
+      card.hash[:category]
 
     end
   end
