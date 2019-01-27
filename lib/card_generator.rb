@@ -28,5 +28,3 @@ class CardGenerator
     end
   end
 end
-
-# cards = CardGenerator.new("cards.txt").cards

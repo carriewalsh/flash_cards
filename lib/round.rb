@@ -1,7 +1,5 @@
-require "pry"
-
 class Round
-  attr_accessor :deck, :score, :count, :score, :string, :correct_cards, :half_cards, :wrong_cards, :name
+  attr_reader :deck, :score, :count, :score, :string, :correct_cards, :half_cards, :wrong_cards, :name
   def initialize(deck)
     @deck = deck
     @score = 0
@@ -10,17 +8,15 @@ class Round
     @half_cards = []
     @wrong_cards = []
   end
-  # def gets_deck(deck) #tested (use count in test not length)
-  #   @deck = deck #can i shuffle the deck here?
-  # end
+
   def current_card #tested
     @deck.card_array[@count]
   end
 
   def take_turn
-    p "Question #{@count+1}: " + current_card.question #does this need round?
+    p "Question #{@count+1}: " + current_card.question
     @string = STDIN.gets.chomp #somehow iteration 4 makes this not work w/o STDIN which stands for standard input
-    # binding.pry
+
     turn = Turn.new(@string, current_card)
     turn.guess
     if @string == "q"
@@ -58,7 +54,6 @@ class Round
   def turns_loop
     @deck.card_array.each do |card|
       take_turn
-      #p @score
       puts
       puts
     end
@@ -93,7 +88,6 @@ class Round
       total = @deck.cards_in_category(category).count
       correct = 0
       @correct_cards.each do |card|
-        # binding.pry
         if card.hash[:category] == category
           correct += 1
         end
@@ -136,7 +130,8 @@ class Round
     puts
     sleep(1)
     p "Let's meet our contestant! What's your name?"
-    @name = gets.chomp.capitalize!
+    @name = gets.chomp
+    @name.capitalize!
     p "Great #{@name}! You will be answering #{deck.card_array.count} questions"
     puts
     p " -- if you are ever panicking and need to leave, type 'q' -- "

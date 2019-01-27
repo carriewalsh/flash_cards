@@ -1,7 +1,6 @@
-
-
 class Deck
-  attr_accessor :card_array, :category_array #this is edited outside this class
+  attr_accessor :card_array  #this is edited outside this class
+  attr_reader :category_array
   def initialize #tested
     @card_array = []
     @category_array = []
@@ -15,7 +14,7 @@ class Deck
   def count #tested
     @card_array.length
   end
-  def cards_in_category(category) #tested for .each; tested for .select, tested for .map
+  def cards_in_category(category) #tested for .each; tested for .select; tested for .map
     cat_array = []
     @card_array.map do |card|
       if category == card.category
@@ -27,7 +26,6 @@ class Deck
 
   def array_of_categories
     @category_array = @card_array.map do |card|
-      # binding.pry
       card.hash[:category]
 
     end

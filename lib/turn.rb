@@ -1,7 +1,5 @@
-require "pry"
-
 class Turn
-  attr_accessor :string, :card #these don't need to be changed outside
+  attr_reader :string, :card #these don't need to be changed outside
   def initialize(string, card)
     @string = string
     @card = card
@@ -11,9 +9,6 @@ class Turn
     p "Your guess is: " + @string
     return @string
   end
-  # def card #how is this related to round?
-  #   return @card
-  # end I think this is unnecessary
 
   def correct?
     if @string == ""

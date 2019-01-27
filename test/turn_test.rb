@@ -25,7 +25,7 @@ class TurnTest < MiniTest::Test
   def test_turn_has_card
     turn = Turn.new("Juneau",@card)
 
-    assert_equal "What is the capital of Alaska?", @card.question #is this for sure right? is it accessing the card in Turn?
+    assert_equal "What is the capital of Alaska?", @card.question
   end
 
   def test_correct_answer_works
@@ -50,7 +50,7 @@ class TurnTest < MiniTest::Test
     turn.guess
     turn.correct?
 
-    refute turn.correct? #this doesn't work if i put assert_equal false, turn.correct?
+    refute turn.correct?
   end
 
   def test_correct_feedback
