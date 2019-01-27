@@ -1,0 +1,5 @@
+card,question,acceptable_answer,half_answer,category,response
+card1,Who was the best F1 driver in 2018?,Lewis Hamilton,Sebastian Vettel,racing,It's Lewis Hamilton! Vettel got 2nd...
+card2,What is the most important grain in bourbon?,corn,Corn,:liquor,It's corn! Did you accidentally capitalize it?
+card3,Which state makes the best cheese?,Oregon,Wisconsin,:food,It's Oregon. Tillamook? Ever heard of it?
+card4,What precious metal will you find in a catalytic converter?,platinum,gold,:cars,It's platinum! Gold is more difficult to work with.
