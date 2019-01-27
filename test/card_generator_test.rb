@@ -4,19 +4,17 @@ require "./lib/card_generator"
 
 
 class CardGeneratorTest < Minitest::Test
+  def setup
+    @cards = CardGenerator.new("cards.txt")
+  end
 
   def test_card_generator_cards_exist
-    cards = CardGenerator.new("cards.txt")
-
-
-    assert_instance_of CardGenerator, cards
+    assert_instance_of CardGenerator, @cards
   end
 
   def test_card_generator_cards_created
-    cards = CardGenerator.new("cards.txt")
-    cards.create_cards
+    @cards.create_cards
 
-    assert_equal 4, cards.cards.count
+    assert_equal 4, @cards.cards.count
   end
-
 end

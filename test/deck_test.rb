@@ -22,9 +22,7 @@ class DeckTest < MiniTest::Test
   end
 
   def test_deck_exists
-
     assert_instance_of Deck, @deck
-
   end
 
   def test_new_deck_is_empty
@@ -34,8 +32,6 @@ class DeckTest < MiniTest::Test
 
 
   def test_puts_cards_in_deck
-
-
     assert @deck.card_array.any?
   end
 
@@ -47,23 +43,16 @@ class DeckTest < MiniTest::Test
   end
 
   def test_deck_has_count
-
-
     @deck.count
 
     assert_equal 6, @deck.count
   end
 
   def test_if_category_array_made
-
     assert_equal [@card1, @card2], @deck.cards_in_category(:nada) #just had to prepend this w/ deck
   end
 
   def test_array_of_categories_made
-
-
     assert_equal [:nada, :nada, :nada3, :nada4, :nada5, :nada6], @deck.array_of_categories
   end
-
-
 end
